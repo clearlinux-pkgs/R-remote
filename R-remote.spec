@@ -4,19 +4,13 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 4
+Release  : 5
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-remote-lib = %{version}-%{release}
-Requires: R-Rcpp
-Requires: R-gridExtra
-Requires: R-latticeExtra
-Requires: R-mapdata
-Requires: R-raster
-Requires: R-scales
 BuildRequires : R-Rcpp
 BuildRequires : R-gridExtra
 BuildRequires : R-latticeExtra
@@ -26,15 +20,10 @@ BuildRequires : R-scales
 BuildRequires : buildreq-R
 
 %description
-'remote' is short for 'R(-based) EMpirical Orthogonal TEleconnections'.
-    It implements a collection of functions to facilitate empirical
-    orthogonal teleconnection analysis. Empirical Orthogonal Teleconnections
-    (EOTs) denote a regression based approach to decompose spatio-temporal
-    fields into a set of independent orthogonal patterns. They are quite
-    similar to Empirical Orthogonal Functions (EOFs) with EOTs producing
-    less abstract results. In contrast to EOFs, which are orthogonal in both
-    space and time, EOT analysis produces patterns that are orthogonal in
-    either space or time.
+remote
+====
+### R EMpirical Orthogonal TEleconnections
+for detailed descriptions of the algorithm & methodolgy please have a look at:
 
 %package lib
 Summary: lib components for the R-remote package.
@@ -52,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540773180
+export SOURCE_DATE_EPOCH=1552868618
 
 %install
-export SOURCE_DATE_EPOCH=1540773180
+export SOURCE_DATE_EPOCH=1552868618
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -91,8 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library remote|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  remote || :
 
 
 %files
@@ -123,7 +111,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/remote/help/remote.rdx
 /usr/lib64/R/library/remote/html/00Index.html
 /usr/lib64/R/library/remote/html/R.css
-/usr/lib64/R/library/remote/libs/symbols.rds
 
 %files lib
 %defattr(-,root,root,-)
