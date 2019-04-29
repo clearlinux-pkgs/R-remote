@@ -4,19 +4,29 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-remote-lib = %{version}-%{release}
+Requires: R-RColorBrewer
+Requires: R-gtable
+Requires: R-maps
+Requires: R-munsell
+Requires: R-sp
+BuildRequires : R-RColorBrewer
 BuildRequires : R-Rcpp
 BuildRequires : R-gridExtra
+BuildRequires : R-gtable
 BuildRequires : R-latticeExtra
 BuildRequires : R-mapdata
+BuildRequires : R-maps
+BuildRequires : R-munsell
 BuildRequires : R-raster
 BuildRequires : R-scales
+BuildRequires : R-sp
 BuildRequires : buildreq-R
 
 %description
@@ -41,10 +51,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552868618
+export SOURCE_DATE_EPOCH=1556496549
 
 %install
-export SOURCE_DATE_EPOCH=1552868618
+export SOURCE_DATE_EPOCH=1556496549
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -80,7 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  remote || :
+R CMD check --no-manual --no-examples --no-codoc remote || :
 
 
 %files
