@@ -4,36 +4,37 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 11
+Release  : 12
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-remote-lib = %{version}-%{release}
-Requires: R-RColorBrewer
-Requires: R-gtable
-Requires: R-maps
-Requires: R-munsell
-Requires: R-sp
-BuildRequires : R-RColorBrewer
+Requires: R-Rcpp
+Requires: R-gridExtra
+Requires: R-latticeExtra
+Requires: R-mapdata
+Requires: R-raster
+Requires: R-scales
 BuildRequires : R-Rcpp
 BuildRequires : R-gridExtra
-BuildRequires : R-gtable
 BuildRequires : R-latticeExtra
 BuildRequires : R-mapdata
-BuildRequires : R-maps
-BuildRequires : R-munsell
 BuildRequires : R-raster
 BuildRequires : R-scales
-BuildRequires : R-sp
 BuildRequires : buildreq-R
 
 %description
-remote
-====
-### R EMpirical Orthogonal TEleconnections
-for detailed descriptions of the algorithm & methodolgy please have a look at:
+'remote' is short for 'R(-based) EMpirical Orthogonal TEleconnections'.
+    It implements a collection of functions to facilitate empirical
+    orthogonal teleconnection analysis. Empirical Orthogonal Teleconnections
+    (EOTs) denote a regression based approach to decompose spatio-temporal
+    fields into a set of independent orthogonal patterns. They are quite
+    similar to Empirical Orthogonal Functions (EOFs) with EOTs producing
+    less abstract results. In contrast to EOFs, which are orthogonal in both
+    space and time, EOT analysis produces patterns that are orthogonal in
+    either space or time.
 
 %package lib
 Summary: lib components for the R-remote package.
@@ -50,13 +51,13 @@ lib components for the R-remote package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556496549
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569384782
 
 %install
-export SOURCE_DATE_EPOCH=1556496549
+export SOURCE_DATE_EPOCH=1569384782
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -85,7 +86,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
