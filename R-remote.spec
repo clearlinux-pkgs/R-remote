@@ -4,7 +4,7 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
@@ -24,17 +24,13 @@ BuildRequires : R-mapdata
 BuildRequires : R-raster
 BuildRequires : R-scales
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-'remote' is short for 'R(-based) EMpirical Orthogonal TEleconnections'.
-    It implements a collection of functions to facilitate empirical
-    orthogonal teleconnection analysis. Empirical Orthogonal Teleconnections
-    (EOTs) denote a regression based approach to decompose spatio-temporal
-    fields into a set of independent orthogonal patterns. They are quite
-    similar to Empirical Orthogonal Functions (EOFs) with EOTs producing
-    less abstract results. In contrast to EOFs, which are orthogonal in both
-    space and time, EOT analysis produces patterns that are orthogonal in
-    either space or time.
+remote
+====
+### R EMpirical Orthogonal TEleconnections
+for detailed descriptions of the algorithm & methodolgy please have a look at:
 
 %package lib
 Summary: lib components for the R-remote package.
@@ -52,10 +48,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569384782
+export SOURCE_DATE_EPOCH=1571888129
 
 %install
-export SOURCE_DATE_EPOCH=1569384782
+export SOURCE_DATE_EPOCH=1571888129
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
