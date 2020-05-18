@@ -4,7 +4,7 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
@@ -24,13 +24,17 @@ BuildRequires : R-mapdata
 BuildRequires : R-raster
 BuildRequires : R-scales
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-remote
-====
-### R EMpirical Orthogonal TEleconnections
-for detailed descriptions of the algorithm & methodolgy please have a look at:
+'remote' is short for 'R(-based) EMpirical Orthogonal TEleconnections'.
+    It implements a collection of functions to facilitate empirical
+    orthogonal teleconnection analysis. Empirical Orthogonal Teleconnections
+    (EOTs) denote a regression based approach to decompose spatio-temporal
+    fields into a set of independent orthogonal patterns. They are quite
+    similar to Empirical Orthogonal Functions (EOFs) with EOTs producing
+    less abstract results. In contrast to EOFs, which are orthogonal in both
+    space and time, EOT analysis produces patterns that are orthogonal in
+    either space or time.
 
 %package lib
 Summary: lib components for the R-remote package.
@@ -42,21 +46,22 @@ lib components for the R-remote package.
 
 %prep
 %setup -q -c -n remote
+cd %{_builddir}/remote
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571888129
+export SOURCE_DATE_EPOCH=1589769019
 
 %install
-export SOURCE_DATE_EPOCH=1571888129
+export SOURCE_DATE_EPOCH=1589769019
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
