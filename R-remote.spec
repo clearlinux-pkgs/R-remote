@@ -4,7 +4,7 @@
 #
 Name     : R-remote
 Version  : 1.2.1
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remote_1.2.1.tar.gz
 Summary  : Empirical Orthogonal Teleconnections in R
